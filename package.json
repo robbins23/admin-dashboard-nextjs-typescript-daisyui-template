@@ -1,7 +1,8 @@
 {
-  "name": "admin-dashboard-daisyui-nextjs",
+  "name": "admin-dashboard-daisyui-nextjs-typescript",
   "version": "0.1.0",
   "private": true,
+  "description": "Admin Dashboard template built with next js 14 app router typescript, tailwind css and daisy UI. Template uses rich tailwind css utility classes and have components of daisy UI, also have redux toolkit implemented for store management.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -32,5 +33,27 @@
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
     "typescript": "^5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robbins23/admin-dashboard-nextjs-daisyui-template"
+  },
+  "keywords": [
+    "reactjs",
+    "nextjs14",
+    "nextjs-approuter",
+    "typescript",
+    "tailwind-css",
+    "starter-kit",
+    "saas-starter-kit",
+    "reduxt-toolkit-dashboard-template",
+    "daisyui-template",
+    "dashboard-template",
+    "react-charts"
+  ],
+  "author": "robbins23",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robbins23/admin-dashboard-nextjs-daisyui-template/issues"
   }
 }
