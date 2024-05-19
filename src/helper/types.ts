@@ -24,6 +24,13 @@ export interface SubmenuItem {
 
 // Routes Interface End ------------------------
 
+/**
+ * Interface for api response
+ */
+export interface APIResponse {
+    payload: any;
+    message: string; 
+}
 
 /**
  * Interface for UserProfile data.

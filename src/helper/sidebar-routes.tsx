@@ -30,7 +30,7 @@ const routes: SidebarMenuObj[] = [
         pageTitle : "Leads"
     },
     {
-        path: '',
+        path: '/settings',
         icon: <Cog6ToothIcon className={`${iconClasses} inline`} />,
         pageName: 'Settings',
         pageTitle : "",

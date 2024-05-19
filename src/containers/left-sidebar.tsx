@@ -6,12 +6,13 @@ import SidebarSubmenu from './sidebar-submenu';
 import routes from '@/helper/sidebar-routes';
 import { usePathname } from 'next/navigation'
 import { useEffect } from 'react';
-import { useAppDispatch } from '@/lib/hooks';
+import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { setPageTitle } from '@/features/common/headerSlice';
 import { UserProfile } from '@/helper/types';
 import BookmarkSquareIcon from '@heroicons/react/24/outline/BookmarkSquareIcon'
 import ChevronUpIcon from '@heroicons/react/24/outline/ChevronUpIcon'
 import ArrowUpOnSquareIcon from '@heroicons/react/24/outline/ArrowUpOnSquareIcon'
+import { getUserInfo } from '@/features/common/userSlice';
 
 interface LeftSidebarProps {}
 
@@ -25,26 +26,41 @@ function LeftSidebar(props: LeftSidebarProps) {
         const leftSidebarDrawer = document.getElementById('left-sidebar-drawer');
         if (leftSidebarDrawer) leftSidebarDrawer.click();
     };
+    const user = useAppSelector((state) => state.user);
 
-    const user : UserProfile = {
-        name : "Alex",
-        avatar : "https://reqres.in/img/faces/7-image.jpg",
-        emailId : ""
-    }
 
     useEffect(() => {
         console.log(pathname)
         let routeObj = routes.filter((r) => {return r.path == pathname})[0]
         if(routeObj){
             dispatch(setPageTitle({title : routeObj.pageTitle}))
+        }else{
+            const secondSlashIndex = pathname.indexOf('/', pathname.indexOf('/') + 1)
+            if (secondSlashIndex !== -1) {
+                const substringBeforeSecondSlash = pathname.substring(0, secondSlashIndex);
+                let submenuRouteObj = routes.filter((r) => {return r.path == substringBeforeSecondSlash})[0]
+                if(submenuRouteObj.submenu){
+                    let submenuObj = submenuRouteObj.submenu.filter((r) => {return r.path == pathname})[0]
+                    console.log("herere", submenuObj)
+                    dispatch(setPageTitle({title : submenuObj.pageTitle}))
+                    
+                }
+            }
         }
     }, [pathname])
+
+
+    useEffect(() => {
+        dispatch(getUserInfo())
+    }, [])
 
     const logoutUser = async () => {
         console.log("here")
         localStorage.clear();
         window.location.href = '/'
       }
+
+      
 
 
     return (
