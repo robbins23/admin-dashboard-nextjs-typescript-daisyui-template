@@ -88,7 +88,7 @@ function LeftSidebar(props: LeftSidebarProps) {
                             ) : (
                                 <Link
                                     href={route.path}
-                                    className={`${true ? 'font-semibold bg-base-200 ' : 'font-normal'}`
+                                    className={`${pathname == route.path ? 'font-semibold bg-base-200 ' : 'font-normal'}`
                                     }
                                 >
                                     {route.icon} {route.pageName}

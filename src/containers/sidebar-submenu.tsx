@@ -26,7 +26,7 @@ function SidebarSubmenu({ submenu, pageName, icon }: SidebarSubmenuProps) {
     }, [submenu, location.pathname]);
 
     return (
-        <div className="flex flex-col bg-base-200">
+        <div className="flex flex-col hover:bg-base-100 bg-base-100">
             {/** Route header */}
             <div className="w-full block" onClick={() => setIsExpanded(!isExpanded)}>
                 {icon} {pageName}
@@ -42,7 +42,7 @@ function SidebarSubmenu({ submenu, pageName, icon }: SidebarSubmenuProps) {
                 <ul className="menu menu-compact">
                     {submenu && submenu.map((m, k) => (
                         <li key={k}>
-                            <Link href={m.path}>
+                            <Link href={m.path} className={`${pathname == m.path ? "font-semibold bg-base-200" : ""}`}>
                                 {m.icon} {m.pageName}
                                 {pathname === m.path ? (
                                     <span
