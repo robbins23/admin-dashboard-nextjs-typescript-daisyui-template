@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { showNotification } from "../../common/headerSlice";
 import { addNewLead } from "../leadSlice";
 import InputText from "@/components/input/input-text";
+import TextArea from "@/components/input/text-area";
 import ErrorText from "@/components/typography/error-text";
 import { Lead } from "@/helper/types";
 
@@ -16,7 +17,8 @@ const INITIAL_LEAD_OBJ: Lead = {
     first_name: "",
     last_name: "",
     email: "",
-    avatar : ""
+    avatar : "",
+    description: "",
 };
 
 function AddLeadModalBody({ closeModal }: Props) {
@@ -34,6 +36,7 @@ function AddLeadModalBody({ closeModal }: Props) {
                 email: leadObj.email,
                 first_name: leadObj.first_name,
                 last_name: leadObj.last_name,
+                description: leadObj.description,
                 avatar: "https://reqres.in/img/faces/1-image.jpg"
             };
             dispatch(addNewLead({ newLeadObj }));
@@ -54,6 +57,8 @@ function AddLeadModalBody({ closeModal }: Props) {
             <InputText type="text" defaultValue={leadObj.last_name} updateType="last_name" containerStyle="mt-4" labelTitle="Last Name" updateFormValue={updateFormValue} />
 
             <InputText type="email" defaultValue={leadObj.email} updateType="email" containerStyle="mt-4" labelTitle="Email Id" updateFormValue={updateFormValue} />
+
+            <TextArea defaultValue={leadObj.description} updateType="description" labelTitle="Description" updateFormValue={updateFormValue} />
 
             <ErrorText styleClass="mt-16">{errorMessage}</ErrorText>
             <div className="modal-action">
