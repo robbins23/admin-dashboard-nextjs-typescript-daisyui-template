@@ -58,7 +58,7 @@ function AddLeadModalBody({ closeModal }: Props) {
 
             <InputText type="email" defaultValue={leadObj.email} updateType="email" containerStyle="mt-4" labelTitle="Email Id" updateFormValue={updateFormValue} />
 
-            <TextArea defaultValue={leadObj.description} updateType="description" labelTitle="Description" updateFormValue={updateFormValue} />
+            <TextArea defaultValue={leadObj.description} updateType="description" containerStyle="mt-4" labelTitle="Description" updateFormValue={updateFormValue} />
 
             <ErrorText styleClass="mt-16">{errorMessage}</ErrorText>
             <div className="modal-action">

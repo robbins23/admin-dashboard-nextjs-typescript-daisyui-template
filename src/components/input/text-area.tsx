@@ -29,7 +29,7 @@ function TextArea({
   return (
     <div className={`form-control w-full ${containerStyle}`}>
       <label className="label">
-        <span className={'label-text text-sm text-bold text-base-content ' + (labelStyle || '')}>{labelTitle}</span>
+        <span className={'label-text text-xs text-base-content ' + (labelStyle || '')}>{labelTitle}</span>
       </label>
       <textarea
         value={value}
