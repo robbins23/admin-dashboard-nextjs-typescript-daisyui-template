@@ -49,6 +49,7 @@ export interface UserProfile {
 export interface Lead {
     first_name: string;
     last_name: string;
+    description: string;
     email: string;
     avatar: string;
     id?: number;
