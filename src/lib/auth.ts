@@ -1,37 +1,31 @@
-import axios from "axios"
+// lib/auth.ts
+'use client'
 
-const checkAuth = () => {
-/*  Getting token value stored in localstorage, if token is not present we will open login page 
-    for all internal dashboard routes  */
-    const TOKEN = localStorage.getItem("token")
-    const PUBLIC_ROUTES = ["login", "forgot-password", "register", "documentation"]
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
-    const isPublicPage = PUBLIC_ROUTES.some( r => window.location.href.includes(r))
+const auth = {
+  saveToken: (token: string) => {
+    Cookies.set('auth-token', token, { 
+      expires: 1, // 1 day
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict'
+    });
+  },
 
-    if(!TOKEN && !isPublicPage){
-        // window.location.href = '/login'
-        // return;
-    }else{
-        axios.defaults.headers.common['Authorization'] = `Bearer ${TOKEN}`
+  getToken: (): string | undefined => {
+    return Cookies.get('auth-token');
+  },
 
-        axios.interceptors.request.use(function (config) {
-            // UPDATE: Add this code to show global loading indicator
-            document.body.classList.add('loading-indicator');
-            return config
-          }, function (error) {
-            return Promise.reject(error);
-          });
-          
-          axios.interceptors.response.use(function (response) {
-            // UPDATE: Add this code to hide global loading indicator
-            document.body.classList.remove('loading-indicator');
-            return response;
-          }, function (error) {
-            document.body.classList.remove('loading-indicator');
-            return Promise.reject(error);
-          });
-        return TOKEN
-    }
+
+  logout: async () => {
+    Cookies.remove('auth-token');
+    return 1
+  },
+
+  isAuthenticated: (): boolean => {
+    return !!Cookies.get('auth-token');
+  },
 }
 
-export default checkAuth
+export default auth;

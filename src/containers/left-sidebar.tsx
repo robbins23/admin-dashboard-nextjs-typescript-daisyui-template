@@ -13,6 +13,7 @@ import BookmarkSquareIcon from '@heroicons/react/24/outline/BookmarkSquareIcon'
 import ChevronUpIcon from '@heroicons/react/24/outline/ChevronUpIcon'
 import ArrowUpOnSquareIcon from '@heroicons/react/24/outline/ArrowUpOnSquareIcon'
 import { getUserInfo } from '@/features/common/userSlice';
+import auth from '@/lib/auth';
 
 interface LeftSidebarProps {}
 
@@ -56,7 +57,7 @@ function LeftSidebar(props: LeftSidebarProps) {
 
     const logoutUser = async () => {
         console.log("here")
-        localStorage.clear();
+        await auth.logout()
         window.location.href = '/'
       }
 

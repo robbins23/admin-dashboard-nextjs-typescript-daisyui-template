@@ -1,41 +1,38 @@
-"use client";
+// app/(public)/layout.tsx
+'use client'
+import { useEffect, useRef } from 'react'
+import { useRouter, usePathname } from 'next/navigation'
+import { useAuth } from '@/lib/AuthProvider'
+import { useAppSelector } from '@/lib/hooks'
+import auth from '@/lib/auth'
 
-import { useEffect, useState } from 'react';
-import { Inter } from "next/font/google";
-import "../globals.css";
-import initializeApp from "@/lib/init";
-import checkAuth from "@/lib/auth";
-import { usePathname, useRouter } from 'next/navigation';
-import StoreProvider from '../StoreProvider';
 
-const inter = Inter({ subsets: ["latin"] });
-
-// Initializing different libraries
-initializeApp();
-
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const router = useRouter();
-  const pathname = usePathname();
+export default function PublicLayout({ children }: { children: React.ReactNode }) {
+  const router = useRouter()
+  const pathname = usePathname()
+  const { isAuthenticated, isLoading } = useAuth()
+  const mainContentRef = useRef(null);
 
 
 
+  // If user is authenticated and still opening login pages, redirect to welcome page
   useEffect(() => {
-    const token = checkAuth(); // Check authentication status
-
-    // Redirect to login page if not logged in and not on login page
-    if (!token && pathname !== '/login') {
-      router.replace('/login');
+    if (!isLoading && isAuthenticated && pathname === '/login') {
+        router.replace(`/welcome`)
     }
-    if(token && pathname === '/'){
-      router.replace('/welcome');
-    }
-  }, [router, pathname]);
+  console.log("public layout...", isAuthenticated, isLoading)
+  }, [isAuthenticated, isLoading, router, pathname])
 
-  return (
-    <html lang="en">
-    <body className={inter.className}>
-        <StoreProvider>{children}</StoreProvider>
-    </body>
-</html>
-  );
+  return <>
+    <div className="drawer">
+              <input id="left-sidebar-drawer" type="checkbox" className="drawer-toggle" />
+              <div className="drawer-content flex flex-col ">
+              
+              <main className="flex-1 overflow-y-auto  " ref={mainContentRef}>
+                  {children}
+                  <div className="h-16"></div>
+              </main>
+              </div>
+          </div>
+      </>
 }

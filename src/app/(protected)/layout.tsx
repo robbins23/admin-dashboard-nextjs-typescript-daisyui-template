@@ -1,55 +1,50 @@
-"use client";
+// app/[workspaceId]/layout.tsx
+"use client"
 
-import { ReactNode, useEffect, useRef, useState } from "react";
-import "../globals.css";
-import 'react-toastify/dist/ReactToastify.css';
-import { useRouter } from 'next/navigation';
-import checkAuth from '@/lib/auth';
-import Header from "@/containers/header";
-import LeftSidebar from "@/containers/left-sidebar";
-import { Inter } from "next/font/google";
-import StoreProvider from "../StoreProvider";
-import RightSidebar from "@/containers/right-sidebar";
-import ModalLayout from "@/containers/modal-layout";
-import initializeApp from "@/lib/init";
-import { ToastContainer } from "react-toastify";
-
-
-const inter = Inter({ subsets: ["latin"] });
-
-type LayoutProps = {
-  children: ReactNode;
-};
-
-initializeApp()
-
-const ProtectedLayout: React.FC<LayoutProps> = ({ children }) => {
-    const router = useRouter();
-    const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false)
-    const mainContentRef = useRef(null);
+import React, { useEffect, useRef } from 'react'
+import type { Metadata } from 'next'
+import axios from 'axios'
+import { useAppDispatch, useAppSelector } from '@/lib/hooks'
+import { useRouter } from 'next/navigation' 
+import auth from '@/lib/auth'
+import { ToastContainer } from 'react-toastify'
+import { useAuth } from '@/lib/AuthProvider'
+import Header from '@/containers/header'
+import LeftSidebar from '@/containers/left-sidebar'
+import RightSidebar from '@/containers/right-sidebar'
+import ModalLayout from '@/containers/modal-layout'
 
 
+interface LayoutProps {
+  children: React.ReactNode
+  params: { workspaceSlug: string }
+}
 
-useEffect(() => {
-  const token = checkAuth(); // Check authentication status
+export default function ProtectedLayout({ children, params }: LayoutProps) {
+  const { isAuthenticated, isLoading } = useAuth()
 
-  // Redirect to login page if not logged in
-  if (!token) {
-    router.replace('/login');
-  }else{
-    setIsLoggedIn(true)
+  const router = useRouter()
+  const dispatch = useAppDispatch()
+  const mainContentRef = useRef(null);
+
+  useEffect(() => {
+    if (!isLoading && !isAuthenticated) {
+      router.replace('/login')
+    }
+  }, [isAuthenticated, isLoading, router])
+  
+
+  if (isLoading) {
+    return <div>Loading...</div>
   }
-}, [router]);
 
+  if (!isAuthenticated) {
+    return null
+  }
 
   return (
-    <html lang="en">
-    <body className={inter.className}>
-      <StoreProvider>
-      {
-        isLoggedIn ? <>
-            {/* Left drawer - containing page content and side bar (always open) */}
-          <div className="drawer lg:drawer-open">
+    <>
+    <div className="drawer lg:drawer-open">
             <input id="left-sidebar-drawer" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col ">
             <Header contentRef={mainContentRef}/>
@@ -69,13 +64,6 @@ useEffect(() => {
 
           {/* Modal layout container */}
           <ModalLayout />
-
-          </> : <></>
-      }
-      </StoreProvider>
-    </body>
-    </html>
-  );
-};
-
-export default ProtectedLayout;
+    </>
+  )
+}

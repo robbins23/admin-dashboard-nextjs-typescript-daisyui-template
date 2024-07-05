@@ -5,6 +5,7 @@ import InputText from '@/components/input/input-text';
 import ErrorText from '@/components/typography/error-text';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useAuth } from '@/lib/AuthProvider';
 
 interface LoginObj {
   otp: string;
@@ -19,6 +20,7 @@ function Login(): JSX.Element {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [showLoginPage, setShowLoginPage] = useState<boolean>(true);
   const [isOtpSent, setIsOtpSent] = useState(false)
+  const { login } = useAuth()
 
   const [loginObj, setLoginObj] = useState<LoginObj>({
     otp: '',
@@ -59,13 +61,15 @@ function Login(): JSX.Element {
         setLoading(true);
         // Simulate API call
         setTimeout(() => {
-          localStorage.setItem('token', 'DummyTokenHere');
-          setLoading(false);
-          console.log('erer')
-          router.push('/welcome');
+          loginUser({token : "asdsadsddsad$$token"})
         }, 2000);
       }
   }
+
+
+  const loginUser = async({ token }: { token: string;}) => {
+    await login(token)
+  };
 
   const updateFormValue = (updateType: string, value: string): void => {
     setErrorMessage('');
