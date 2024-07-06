@@ -67,7 +67,7 @@ function InputTags({
       <p>
         {
             tags.map((t, k) => (
-                <div className="badge badge-ghost mr-2 hover:badge-neutral cursor-pointer" onClick={() => handleTagRemove(k)}>{t}<XCircleIcon className='ml-1 w-4 h-4 '/></div>
+                <div key={k} className="badge badge-ghost mr-2 hover:badge-neutral cursor-pointer" onClick={() => handleTagRemove(k)}>{t}<XCircleIcon className='ml-1 w-4 h-4 '/></div>
             ))
         }
       </p>
