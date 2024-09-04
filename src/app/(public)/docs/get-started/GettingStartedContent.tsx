@@ -130,8 +130,8 @@ function GettingStartedContent(): React.JSX.Element {
 
         <p>
           Apart from this it also helps in making HTML code more cleaner as we
-          don&apos;t have to include all utility classes of tailwind to make the UI.
-          Check components{" "}
+          don&apos;t have to include all utility classes of tailwind to make the
+          UI. Check components{" "}
           <a
             href="https://daisyui.com/components/button/"
             target="_blank"
@@ -237,7 +237,8 @@ function GettingStartedContent(): React.JSX.Element {
         </div>
 
         <p>
-          Don&apos;t import like this (will load all icons and increase build time)
+          Don&apos;t import like this (will load all icons and increase build
+          time)
         </p>
         <pre><code>{"import {BeakerIcon, BellIcon } from '@heroicons/react/24/solid'"}</code></pre>
 
