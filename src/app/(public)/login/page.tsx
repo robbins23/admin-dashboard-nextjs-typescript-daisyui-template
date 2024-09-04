@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import LandingIntro from "@/features/login/landing-intro";
-import InputText from "@/components/input/input-text";
-import ErrorText from "@/components/typography/error-text";
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-import { useAuth } from "@/lib/AuthProvider";
+import LandingIntro from '@/components/features/login/landing-intro';
+import InputText from '@/components/input/input-text';
+import ErrorText from '@/components/typography/error-text';
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/lib/AuthProvider';
 
 interface LoginObj {
   otp: string;
@@ -15,19 +15,19 @@ interface LoginObj {
 function Login(): JSX.Element {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
-  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string>('');
   const [showLoginPage, setShowLoginPage] = useState<boolean>(true);
   const [isOtpSent, setIsOtpSent] = useState(false);
   const { login } = useAuth();
 
   const [loginObj, setLoginObj] = useState<LoginObj>({
-    otp: "",
-    emailId: "",
+    otp: '',
+    emailId: '',
   });
 
   const submitForm = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    setErrorMessage("");
+    setErrorMessage('');
     if (loading) return;
     if (isOtpSent) {
       submitVerificationCode();
@@ -37,8 +37,8 @@ function Login(): JSX.Element {
   };
 
   const sendMailOtp = () => {
-    if (loginObj.emailId.trim() === "") {
-      setErrorMessage("Email Id is required! (use any value)");
+    if (loginObj.emailId.trim() === '') {
+      setErrorMessage('Email Id is required! (use any value)');
       return;
     } else {
       setLoading(true);
@@ -51,14 +51,14 @@ function Login(): JSX.Element {
   };
 
   const submitVerificationCode = () => {
-    if (loginObj.otp.trim() === "") {
-      setErrorMessage("OTP is required! (use any value)");
+    if (loginObj.otp.trim() === '') {
+      setErrorMessage('OTP is required! (use any value)');
       return;
     } else {
       setLoading(true);
       // Simulate API call
       setTimeout(() => {
-        loginUser({ token: "asdsadsddsad$$token" });
+        loginUser({ token: 'asdsadsddsad$$token' });
       }, 2000);
     }
   };
@@ -68,7 +68,7 @@ function Login(): JSX.Element {
   };
 
   const updateFormValue = (updateType: string, value: string): void => {
-    setErrorMessage("");
+    setErrorMessage('');
     setLoginObj({ ...loginObj, [updateType]: value });
   };
 
@@ -128,7 +128,7 @@ function Login(): JSX.Element {
                 )}
                 <button type="submit" className={`btn mt-2 w-full btn-primary`}>
                   {loading && <span className="loading loading-spinner"></span>}
-                  {isOtpSent ? "Verify" : "Get Verification Code"}
+                  {isOtpSent ? 'Verify' : 'Get Verification Code'}
                 </button>
               </div>
             </form>

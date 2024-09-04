@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { showNotification } from "../../common/headerSlice";
-import { addNewLead } from "../leadSlice";
-import InputText from "@/components/input/input-text";
-import TextArea from "@/components/input/text-area";
-import ErrorText from "@/components/typography/error-text";
-import { Lead } from "@/helper/types";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addNewLead } from '../../app/(protected)/leads/leadSlice';
+import InputText from '@/components/input/input-text';
+import TextArea from '@/components/input/text-area';
+import ErrorText from '@/components/typography/error-text';
+import { Lead } from '@/helper/types';
+import { showNotification } from './common/headerSlice';
 
 interface Props {
   closeModal: () => void;
@@ -13,24 +13,24 @@ interface Props {
 }
 
 const INITIAL_LEAD_OBJ: Lead = {
-  first_name: "",
-  last_name: "",
-  email: "",
-  avatar: "",
-  description: "",
+  first_name: '',
+  last_name: '',
+  email: '',
+  avatar: '',
+  description: '',
 };
 
 function AddLeadModalBody({ closeModal }: Props) {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
   const [leadObj, setLeadObj] = useState<Lead>(INITIAL_LEAD_OBJ);
 
   const saveNewLead = () => {
-    if (leadObj.first_name.trim() === "") {
-      return setErrorMessage("First Name is required!");
-    } else if (leadObj.email.trim() === "") {
-      return setErrorMessage("Email id is required!");
+    if (leadObj.first_name.trim() === '') {
+      return setErrorMessage('First Name is required!');
+    } else if (leadObj.email.trim() === '') {
+      return setErrorMessage('Email id is required!');
     } else {
       const newLeadObj: Lead = {
         id: 7,
@@ -38,16 +38,16 @@ function AddLeadModalBody({ closeModal }: Props) {
         first_name: leadObj.first_name,
         last_name: leadObj.last_name,
         description: leadObj.description,
-        avatar: "https://reqres.in/img/faces/1-image.jpg",
+        avatar: 'https://reqres.in/img/faces/1-image.jpg',
       };
       dispatch(addNewLead({ newLeadObj }));
-      dispatch(showNotification({ message: "New Lead Added!", status: 1 }));
+      dispatch(showNotification({ message: 'New Lead Added!', status: 1 }));
       closeModal();
     }
   };
 
   const updateFormValue = (updateType: string, value: string) => {
-    setErrorMessage("");
+    setErrorMessage('');
     setLeadObj({ ...leadObj, [updateType]: value });
   };
 

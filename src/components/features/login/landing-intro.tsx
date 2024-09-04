@@ -1,5 +1,6 @@
-"use client";
-import { APP_NAME } from "../../helper/app-constants";
+'use client';
+
+import { APP_NAME } from '@/helper/app-constants';
 
 function LandingIntro() {
   return (
@@ -13,8 +14,7 @@ function LandingIntro() {
               src="./intro.png"
               alt="Dashwind Admin Template"
               className="w-48 inline-block"
-            >
-            </img>
+            ></img>
           </div>
 
           <p className="mt-8 font-bold text-xs">

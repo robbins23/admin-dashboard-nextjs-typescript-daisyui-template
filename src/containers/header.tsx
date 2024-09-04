@@ -1,15 +1,15 @@
-"use client";
-import { themeChange } from "theme-change";
-import React, { useEffect, useState } from "react";
-import BellIcon from "@heroicons/react/24/outline/BellIcon";
-import Bars3Icon from "@heroicons/react/24/outline/Bars3Icon";
-import MoonIcon from "@heroicons/react/24/outline/MoonIcon";
-import SunIcon from "@heroicons/react/24/outline/SunIcon";
-import { useAppDispatch, useAppSelector } from "../lib/hooks";
-import { removeNotificationMessage } from "@/features/common/headerSlice";
-import { openRightDrawer } from "@/features/common/rightDrawerSlice";
-import { RIGHT_DRAWER_TYPES } from "@/helper/app-constants";
-import { toast } from "react-toastify";
+'use client';
+import { themeChange } from 'theme-change';
+import React, { useEffect, useState } from 'react';
+import BellIcon from '@heroicons/react/24/outline/BellIcon';
+import Bars3Icon from '@heroicons/react/24/outline/Bars3Icon';
+import MoonIcon from '@heroicons/react/24/outline/MoonIcon';
+import SunIcon from '@heroicons/react/24/outline/SunIcon';
+import { useAppDispatch, useAppSelector } from '../lib/hooks';
+import { removeNotificationMessage } from '@/components/features/common/headerSlice';
+import { openRightDrawer } from '@/components/features/common/rightDrawerSlice';
+import { RIGHT_DRAWER_TYPES } from '@/helper/app-constants';
+import { toast } from 'react-toastify';
 
 interface HeaderProps {
   contentRef: React.RefObject<HTMLElement>;
@@ -23,15 +23,15 @@ function Header({ contentRef }: HeaderProps): JSX.Element {
     newNotificationStatus,
   } = useAppSelector((state) => state.header);
   const [currentTheme, setCurrentTheme] = useState<string | null>(
-    localStorage.getItem("theme"),
+    localStorage.getItem('theme')
   );
 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     console.log(newNotificationMessage);
-    if (newNotificationMessage !== "") {
-      console.log("herer");
+    if (newNotificationMessage !== '') {
+      console.log('herer');
       if (newNotificationStatus == 1) {
         toast.success(newNotificationMessage);
       } else {
@@ -46,7 +46,7 @@ function Header({ contentRef }: HeaderProps): JSX.Element {
     if (contentRef.current) {
       (contentRef.current as HTMLDivElement).scroll({
         top: 0,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     }
   }, [pageTitle]);
@@ -56,11 +56,11 @@ function Header({ contentRef }: HeaderProps): JSX.Element {
     if (currentTheme === null) {
       if (
         window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches
+        window.matchMedia('(prefers-color-scheme: dark)').matches
       ) {
-        setCurrentTheme("dark");
+        setCurrentTheme('dark');
       } else {
-        setCurrentTheme("light");
+        setCurrentTheme('light');
       }
     }
   }, []);
@@ -69,10 +69,10 @@ function Header({ contentRef }: HeaderProps): JSX.Element {
   const openNotification = (): void => {
     dispatch(
       openRightDrawer({
-        header: "Notifications",
+        header: 'Notifications',
         bodyType: RIGHT_DRAWER_TYPES.NOTIFICATION,
         extraObject: {},
-      }),
+      })
     );
   };
 
@@ -97,14 +97,14 @@ function Header({ contentRef }: HeaderProps): JSX.Element {
             data-set-theme="light"
             data-act-class="ACTIVECLASS"
             className={`fill-current w-6 h-6 ${
-              currentTheme === "dark" ? "swap-on" : "swap-off"
+              currentTheme === 'dark' ? 'swap-on' : 'swap-off'
             }`}
           />
           <MoonIcon
             data-set-theme="dark"
             data-act-class="ACTIVECLASS"
             className={`fill-current w-6 h-6 ${
-              currentTheme === "light" ? "swap-on" : "swap-off"
+              currentTheme === 'light' ? 'swap-on' : 'swap-off'
             }`}
           />
         </label>
@@ -116,13 +116,11 @@ function Header({ contentRef }: HeaderProps): JSX.Element {
         >
           <div className="indicator">
             <BellIcon className="h-6 w-6" />
-            {noOfNotifications > 0
-              ? (
-                <span className="indicator-item badge badge-secondary badge-sm">
-                  {noOfNotifications}
-                </span>
-              )
-              : null}
+            {noOfNotifications > 0 ? (
+              <span className="indicator-item badge badge-secondary badge-sm">
+                {noOfNotifications}
+              </span>
+            ) : null}
           </div>
         </button>
       </div>

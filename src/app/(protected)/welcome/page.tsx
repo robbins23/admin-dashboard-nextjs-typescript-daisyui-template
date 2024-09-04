@@ -1,6 +1,6 @@
-import IntroPointers from "@/features/login/intro-pointers";
-import Link from "next/link";
-import React from "react";
+import IntroPointers from '@/components/features/login/intro-pointers';
+import Link from 'next/link';
+import React from 'react';
 
 function Welcome() {
   return (
