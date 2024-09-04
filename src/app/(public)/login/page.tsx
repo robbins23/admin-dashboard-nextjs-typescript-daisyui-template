@@ -6,6 +6,9 @@ import ErrorText from "@/components/typography/error-text";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/AuthProvider";
+import { namespaceTranslation } from "@/helper/i18n";
+
+const t = namespaceTranslation("login");
 
 interface LoginObj {
   otp: string;
@@ -38,7 +41,7 @@ function Login(): JSX.Element {
 
   const sendMailOtp = () => {
     if (loginObj.emailId.trim() === "") {
-      setErrorMessage("Email Id is required! (use any value)");
+      setErrorMessage(t("Email is required!") + t(" (use any value)"));
       return;
     } else {
       setLoading(true);
@@ -52,7 +55,7 @@ function Login(): JSX.Element {
 
   const submitVerificationCode = () => {
     if (loginObj.otp.trim() === "") {
-      setErrorMessage("OTP is required! (use any value)");
+      setErrorMessage(t("OTP is required!") + t(" (use any value)"));
       return;
     } else {
       setLoading(true);
@@ -85,7 +88,7 @@ function Login(): JSX.Element {
                 {!isOtpSent && (
                   <>
                     <p className="text-center text-lg   md:mt-0 mt-6 mb-12  font-semibold">
-                      Enter Email ID to Continue
+                      {t("Enter Email Id to Continue")}
                     </p>
 
                     <InputText
@@ -93,8 +96,8 @@ function Login(): JSX.Element {
                       defaultValue={loginObj.emailId}
                       updateType="emailId"
                       containerStyle="mt-4"
-                      labelTitle="Enter your Email Id"
-                      placeholder="Ex - dashwind@gmail.com"
+                      labelTitle={t("Enter your Email Id")}
+                      placeholder={t("Ex - dashwind@gmail.com")}
                       updateFormValue={updateFormValue}
                     />
                   </>
@@ -114,8 +117,8 @@ function Login(): JSX.Element {
                       defaultValue={loginObj.otp}
                       updateType="otp"
                       containerStyle="mt-4"
-                      labelTitle="Verification Code"
-                      placeholder="Ex- 1234"
+                      labelTitle={t("Verification Code")}
+                      placeholder={t("Ex- 1234")}
                       updateFormValue={updateFormValue}
                     />
                   </>
@@ -128,7 +131,7 @@ function Login(): JSX.Element {
                 )}
                 <button type="submit" className={`btn mt-2 w-full btn-primary`}>
                   {loading && <span className="loading loading-spinner"></span>}
-                  {isOtpSent ? "Verify" : "Get Verification Code"}
+                  {isOtpSent ? t("Verify") : t("Get Verification Code")}
                 </button>
               </div>
             </form>

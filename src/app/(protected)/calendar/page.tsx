@@ -1,13 +1,15 @@
 "use client";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { momentLocale as moment } from "@/helper/i18n";
+import { momentLocale as moment, namespaceTranslation } from "@/helper/i18n";
 import { showNotification } from "@/components/features/common/headerSlice";
 import { openRightDrawer } from "@/components/features/common/rightDrawerSlice";
 import { RIGHT_DRAWER_TYPES } from "@/helper/app-constants";
 import { CalendarEvent, getCalendarEvents } from "@/helper/dummy-data";
 import CalendarView from "@/components/CalendarView";
 import { MomentInput } from "moment";
+
+const t = namespaceTranslation("calendar");
 
 const INITIAL_EVENTS = getCalendarEvents();
 
@@ -27,7 +29,7 @@ function Calendar(): React.JSX.Element {
       endTime: moment(date).endOf("day"),
     };
     setEvents([...events, newEventObj]);
-    dispatch(showNotification({ message: "New Event Added!", status: 1 }));
+    dispatch(showNotification({ message: t("New Event Added!"), status: 1 }));
   };
 
   // Open all events of current day in sidebar

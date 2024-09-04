@@ -6,7 +6,7 @@ import { CALENDAR_EVENT_STYLE } from "./util";
 import { MomentInput } from "moment";
 import { CalendarEvent } from "@/helper/dummy-data";
 
-const t = namespaceTranslation("CalendarView");
+const t = namespaceTranslation("calendar");
 
 const THEME_BG = CALENDAR_EVENT_STYLE;
 
@@ -18,7 +18,15 @@ function CalendarView(
   },
 ): React.JSX.Element {
   const today = moment().startOf("day");
-  const weekdays = ["dom", "seg", "ter", "qua", "qui", "sex", "sáb"];
+  const weekdays = [
+    t("Sun"),
+    t("Mon"),
+    t("Tue"),
+    t("Wed"),
+    t("Thu"),
+    t("Fri"),
+    t("Sat"),
+  ];
   const colStartClasses = [
     "",
     "col-start-2",

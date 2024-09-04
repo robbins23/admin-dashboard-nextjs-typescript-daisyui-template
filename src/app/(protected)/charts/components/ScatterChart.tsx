@@ -7,6 +7,9 @@ import {
 } from "chart.js";
 import { Scatter } from "react-chartjs-2";
 import TitleCard from "@/components/cards/title-card";
+import { namespaceTranslation } from "@/helper/i18n";
+
+const t = namespaceTranslation("charts");
 
 ChartJS.register(ArcElement, Tooltip, Legend, Tooltip, Filler, Legend);
 
@@ -22,7 +25,7 @@ function ScatterChart() {
   const data = {
     datasets: [
       {
-        label: "Orders > 1k",
+        label: t("Orders > 1k"),
         data: Array.from({ length: 100 }, () => ({
           x: Math.random() * 11,
           y: Math.random() * 31,
@@ -30,7 +33,7 @@ function ScatterChart() {
         backgroundColor: "rgba(255, 99, 132, 1)",
       },
       {
-        label: "Orders > 2K",
+        label: t("Orders > 2K"),
         data: Array.from({ length: 100 }, () => ({
           x: Math.random() * 12,
           y: Math.random() * 12,
@@ -41,7 +44,7 @@ function ScatterChart() {
   };
 
   return (
-    <TitleCard title={"No of Orders by month (in k)"}>
+    <TitleCard title={t("No of Orders by month (in k)")}>
       <Scatter options={options} data={data} />
     </TitleCard>
   );

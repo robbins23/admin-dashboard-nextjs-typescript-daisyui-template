@@ -17,6 +17,9 @@ import AmountStats from "./AmountStats";
 import PageStats from "./PageStats";
 import UserChannels from "./UserChannels";
 import DoughnutChart from "./DoughnutChart";
+import { namespaceTranslation } from "@/helper/i18n";
+
+const t = namespaceTranslation("charts");
 
 interface StatData {
   title: string;
@@ -27,25 +30,25 @@ interface StatData {
 
 const statsData: StatData[] = [
   {
-    title: "New Users",
+    title: t("New Users"),
     value: "34.7k",
     icon: <UserGroupIcon className="w-8 h-8" />,
     description: "↗︎ 2300 (22%)",
   },
   {
-    title: "Total Sales",
+    title: t("Total Sales"),
     value: "$34,545",
     icon: <CreditCardIcon className="w-8 h-8" />,
-    description: "Current month",
+    description: t("Current month"),
   },
   {
-    title: "Pending Leads",
+    title: t("Pending Leads"),
     value: "450",
     icon: <CircleStackIcon className="w-8 h-8" />,
-    description: "50 in hot leads",
+    description: t("50 in hot leads"),
   },
   {
-    title: "Active Users",
+    title: t("Active Users"),
     value: "5.6k",
     icon: <UsersIcon className="w-8 h-8" />,
     description: "↙ 300 (18%)",
@@ -66,8 +69,12 @@ const Dashboard: React.FC = () => {
     dispatch(
       showNotification({
         message: newRange
-          ? `Período atualizado para ${newRange.startDate} até ${newRange.endDate}`
-          : `Período em branco`,
+          ? t(
+            "Date range updated from {} to {}",
+            newRange.startDate,
+            newRange.endDate,
+          )
+          : t("Empty date range"),
         status: 1,
       }),
     );

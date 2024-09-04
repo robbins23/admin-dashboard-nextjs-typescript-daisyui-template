@@ -8,6 +8,9 @@ import TitleCard from "@/components/cards/title-card";
 import { getRecentTransactions } from "@/helper/dummy-data";
 import { momentLocale as moment } from "@/helper/i18n";
 
+import { namespaceTranslation } from "@/helper/i18n";
+const t = namespaceTranslation("transactions");
+
 const TopSideButtons = ({ removeFilter, applyFilter, applySearch }: {
   removeFilter: () => void;
   applyFilter: (params: string) => void;
@@ -107,7 +110,7 @@ function Transactions() {
   return (
     <>
       <TitleCard
-        title="Recent Transactions"
+        title={t("Recent Transactions")}
         topMargin="mt-2"
         TopSideButtons={
           <TopSideButtons
@@ -122,11 +125,11 @@ function Transactions() {
           <table className="table w-full">
             <thead>
               <tr>
-                <th>Name</th>
-                <th>E-mail</th>
-                <th>Location</th>
-                <th>Amount</th>
-                <th>Transaction Date</th>
+                <th>{t("Name")}</th>
+                <th>{t("E-mail")}</th>
+                <th>{t("Location")}</th>
+                <th>{t("Amount")}</th>
+                <th>{t("Transaction Date")}</th>
               </tr>
             </thead>
             <tbody>
@@ -148,7 +151,7 @@ function Transactions() {
                     <td>{l.email}</td>
                     <td>{l.location}</td>
                     <td>${l.amount}</td>
-                    <td>{moment(l.date).format("D MMM")}</td>
+                    <td>{moment(l.date).format(t("MM/DD/YYYY"))}</td>
                   </tr>
                 );
               })}

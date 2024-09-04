@@ -1,4 +1,5 @@
 import TitleCard from "@/components/cards/title-card";
+import { namespaceTranslation } from "@/helper/i18n";
 import {
   CategoryScale,
   Chart as ChartJS,
@@ -11,6 +12,8 @@ import {
   Tooltip,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
+
+const t = namespaceTranslation("charts");
 
 ChartJS.register(
   CategoryScale,
@@ -34,13 +37,13 @@ function LineChart() {
   };
 
   const labels = [
-    "Janeiro",
-    "Fevereiro",
-    "Março",
-    "Abril",
-    "Maio",
-    "Junho",
-    "Julho",
+    t("January"),
+    t("February"),
+    t("March"),
+    t("April"),
+    t("May"),
+    t("June"),
+    t("July"),
   ];
 
   const data = {
@@ -48,7 +51,7 @@ function LineChart() {
     datasets: [
       {
         fill: true,
-        label: "UAM",
+        label: t("MAU"),
         data: labels.map(() => {
           return Math.random() * 100 + 500;
         }),
@@ -59,7 +62,7 @@ function LineChart() {
   };
 
   return (
-    <TitleCard title={"Usuário Ativos no Mês (in k)"}>
+    <TitleCard title={t("Montly Active Users (in k)")}>
       <Line data={data} options={options} />
     </TitleCard>
   );

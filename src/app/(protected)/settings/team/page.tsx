@@ -4,13 +4,15 @@ import { showNotification } from "@/components/features/common/headerSlice";
 import { getTeamMembers, TeamMember } from "@/helper/dummy-data";
 import { useAppDispatch } from "@/lib/hooks";
 import { useState } from "react";
+import { namespaceTranslation } from "@/helper/i18n";
+const t = namespaceTranslation("team");
 
 const TopSideButtons: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const addNewTeamMember = () => {
     dispatch(
-      showNotification({ message: "Add New Member Clicked", status: 1 }),
+      showNotification({ message: t("Add New Member Clicked"), status: 1 }),
     );
   };
 
@@ -20,7 +22,7 @@ const TopSideButtons: React.FC = () => {
         className="btn px-6 btn-sm normal-case btn-primary"
         onClick={addNewTeamMember}
       >
-        Invite New
+        {t("Invite New")}
       </button>
     </div>
   );
@@ -31,21 +33,21 @@ const Team: React.FC = () => {
 
   const getRoleComponent = (role: string) => {
     if (role === "Admin") {
-      return <div className="badge badge-secondary">{role}</div>;
+      return <div className="badge badge-secondary">{t(role)}</div>;
     }
-    if (role === "Manager") return <div className="badge">{role}</div>;
+    if (role === "Manager") return <div className="badge">{t(role)}</div>;
     if (role === "Owner") {
-      return <div className="badge badge-primary">{role}</div>;
+      return <div className="badge badge-primary">{t(role)}</div>;
     }
     if (role === "Support") {
-      return <div className="badge badge-accent">{role}</div>;
-    } else return <div className="badge badge-ghost">{role}</div>;
+      return <div className="badge badge-accent">{t(role)}</div>;
+    } else return <div className="badge badge-ghost">{t(role)}</div>;
   };
 
   return (
     <>
       <TitleCard
-        title="Active Members"
+        title={t("Active Members")}
         topMargin="mt-2"
         TopSideButtons={<TopSideButtons />}
       >
@@ -53,11 +55,11 @@ const Team: React.FC = () => {
           <table className="table w-full">
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Email Id</th>
-                <th>Joined On</th>
-                <th>Role</th>
-                <th>Last Active</th>
+                <th>{t("Name")}</th>
+                <th>{t("Email Id")}</th>
+                <th>{t("Joined On")}</th>
+                <th>{t("Role")}</th>
+                <th>{t("Last Active")}</th>
               </tr>
             </thead>
             <tbody>

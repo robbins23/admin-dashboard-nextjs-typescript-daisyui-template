@@ -7,33 +7,32 @@ import {
 } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import TitleCard from "@/components/cards/title-card";
+import { namespaceTranslation } from "@/helper/i18n";
+
+const t = namespaceTranslation("charts");
 
 ChartJS.register(ArcElement, Tooltip, Legend, Tooltip, Filler, Legend);
 
 function DoughnutChart() {
   const options = {
     responsive: true,
-    plugins: {
-      // legend: {
-      //   position: "top",
-      // },
-    },
+    plugins: {},
   };
 
   const labels = [
-    "Electronics",
-    "Home Applicances",
-    "Beauty",
-    "Furniture",
-    "Watches",
-    "Apparel",
+    t("Electronics"),
+    t("Home Applicances"),
+    t("Beauty"),
+    t("Furniture"),
+    t("Watches"),
+    t("Apparel"),
   ];
 
   const data = {
     labels,
     datasets: [
       {
-        label: "# of Orders",
+        label: t("# of Orders"),
         data: [122, 219, 30, 51, 82, 13],
         backgroundColor: [
           "rgba(255, 99, 132, 0.8)",
@@ -57,7 +56,7 @@ function DoughnutChart() {
   };
 
   return (
-    <TitleCard title={"Orders by Category"}>
+    <TitleCard title={t("Orders by Category")}>
       <Doughnut options={options} data={data} />
     </TitleCard>
   );

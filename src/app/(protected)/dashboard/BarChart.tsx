@@ -10,6 +10,8 @@ import {
 } from "chart.js";
 import { Bar, getElementAtEvent, getElementsAtEvent } from "react-chartjs-2";
 import TitleCard from "@/components/cards/title-card";
+import { namespaceTranslation } from "@/helper/i18n";
+const t = namespaceTranslation("charts");
 
 ChartJS.register(
   CategoryScale,
@@ -22,13 +24,13 @@ ChartJS.register(
 
 function BarChart(): React.JSX.Element {
   const labels = [
-    "Janeiro",
-    "Fevereiro",
-    "Março",
-    "Abril",
-    "Maio",
-    "Junho",
-    "Julho",
+    t("January"),
+    t("February"),
+    t("March"),
+    t("April"),
+    t("May"),
+    t("June"),
+    t("July"),
   ];
 
   const data = {
@@ -73,7 +75,7 @@ function BarChart(): React.JSX.Element {
     responsive: true,
   };
   return (
-    <TitleCard title={"Receita"}>
+    <TitleCard title={t("Revenue")}>
       <Bar ref={chartRef} options={options} data={data} onClick={chartClick} />
     </TitleCard>
   );

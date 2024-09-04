@@ -25,7 +25,6 @@ function InputTags({
   const [tags, setTags] = useState<string[]>(defaultValue);
 
   const updateInputValue = (val: string): void => {
-    console.log("hwewew");
     setValue(val);
     // updateFormValue(updateKey, val); // Pass both updateKey and value
   };

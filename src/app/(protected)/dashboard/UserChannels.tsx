@@ -1,4 +1,6 @@
 import TitleCard from "@/components/cards/title-card";
+import { namespaceTranslation } from "@/helper/i18n";
+const t = namespaceTranslation("charts");
 
 const userSourceData = [
   { source: "Facebook Ads", count: "26,345", conversionPercent: 10.2 },
@@ -10,7 +12,7 @@ const userSourceData = [
 
 function UserChannels() {
   return (
-    <TitleCard title={"User Signup Source"}>
+    <TitleCard title={t("User Signup Source")}>
       {/** Table Data */}
       <div className="overflow-x-auto">
         <table className="table w-full">

@@ -16,7 +16,7 @@ function SearchBar(
 
   return (
     <div className={"inline-block " + styleClass}>
-      <div className="input-group  relative flex flex-wrap items-stretch w-full ">
+      <div className="input-group relative flex flex-wrap items-stretch w-full ">
         <input
           type="search"
           value={searchText}

@@ -24,6 +24,9 @@ function IntroPointers() {
         ✓ <span className="font-semibold">Daisy UI</span> components,{" "}
         <span className="font-semibold">Tailwind CSS</span> support
       </p>
+      <p className="py-2  ">
+        ✓ <span className="font-semibold">Translations</span> support
+      </p>
     </>
   );
 }

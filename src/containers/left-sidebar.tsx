@@ -14,8 +14,11 @@ import ChevronUpIcon from "@heroicons/react/24/outline/ChevronUpIcon";
 import ArrowUpOnSquareIcon from "@heroicons/react/24/outline/ArrowUpOnSquareIcon";
 import auth from "@/lib/auth";
 import Image from "next/image";
+import { namespaceTranslation } from "@/helper/i18n";
+import { APP_NAME } from "@/helper/app-constants";
+const t = namespaceTranslation("sidebar");
 
-interface LeftSidebarProps {}
+interface LeftSidebarProps { }
 
 function LeftSidebar(props: LeftSidebarProps) {
   const pathname = usePathname();
@@ -28,7 +31,6 @@ function LeftSidebar(props: LeftSidebarProps) {
   const user = useAppSelector((state) => state.user);
 
   useEffect(() => {
-    console.log(pathname);
     let routeObj = routes.filter((r) => {
       return r.path == pathname;
     })[0];
@@ -59,7 +61,6 @@ function LeftSidebar(props: LeftSidebarProps) {
   }, [dispatch]);
 
   const logoutUser = async () => {
-    console.log("here");
     await auth.logout();
     window.location.href = "/";
   };
@@ -92,9 +93,8 @@ function LeftSidebar(props: LeftSidebarProps) {
     return (
       <Link
         href={route.path}
-        className={`${
-          pathname == route.path ? "font-semibold bg-base-200 " : "font-normal"
-        }`}
+        className={`${pathname == route.path ? "font-semibold bg-base-200 " : "font-normal"
+          }`}
       >
         {route.icon} {route.pageName}
         {pathname === route.path
@@ -130,7 +130,7 @@ function LeftSidebar(props: LeftSidebarProps) {
               width="100"
               height="100"
             />
-            DashWind
+            {APP_NAME}
           </Link>
         </li>
         <div
@@ -149,7 +149,9 @@ function LeftSidebar(props: LeftSidebarProps) {
         >
           <div className="avatar">
             <div className="w-6 rounded-full">
-              <Image src={user.avatar} alt={user.name} width={80} height={80} />
+              {user.avatar &&
+                <Image src={user.avatar} alt={user.name} width={80} height={80} />
+              }
             </div>
           </div>
           {user.name}
@@ -157,19 +159,19 @@ function LeftSidebar(props: LeftSidebarProps) {
         </div>
         <ul
           tabIndex={0}
-          className="dropdown-content visible w-52 px-4 z-[1]  menu  shadow bg-base-200 rounded-box "
+          className="dropdown-content visible w-52 px-4 z-[1] menu shadow bg-base-200 rounded-box"
         >
           <li className="">
             <Link href={"/settings/billing"}>
               <BookmarkSquareIcon className="w-4 " />
-              Bill History
+              {t("Bill History")}
             </Link>
           </li>
           <div className="divider py-2 m-0"></div>
           <li onClick={() => logoutUser()}>
             <a className=" ">
               <ArrowUpOnSquareIcon className="w-4 " />
-              Logout
+              {t("Logout")}
             </a>
           </li>
         </ul>

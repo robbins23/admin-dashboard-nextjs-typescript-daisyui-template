@@ -36,12 +36,13 @@ const namespaceTranslation = (namespace: string) => {
       return translationArgsReplace(key, ...args);
     }
 
-    let translation = translations[namespace][key];
+    const nsTranslations = translations[namespace];
+    const translation = nsTranslations ? nsTranslations[key] : null;
     if (!translation) {
       console.warn(
         `Translation not found: namespace="${namespace}" key="${key}"`,
       );
-      return key;
+      return translationArgsReplace(key, ...args);
     }
     return translationArgsReplace(translation, ...args);
   };
@@ -58,4 +59,4 @@ const translationArgsReplace = (
   return translation;
 };
 
-export { moment as momentLocale, namespaceTranslation };
+export { locale, moment as momentLocale, namespaceTranslation };

@@ -6,15 +6,17 @@ import EllipsisVerticalIcon from "@heroicons/react/24/outline/EllipsisVerticalIc
 import ArrowPathIcon from "@heroicons/react/24/outline/ArrowPathIcon";
 import React, { useState } from "react";
 import Datepicker, { DateValueType } from "react-tailwindcss-datepicker";
+import { namespaceTranslation } from "@/helper/i18n";
+const t = namespaceTranslation("charts");
 
-// const periodOptions = [
-//   { name: "Hoje", value: "TODAY" },
-//   { name: "Ontem", value: "YESTERDAY" },
-//   { name: "Esta semana", value: "THIS_WEEK" },
-//   { name: "Semana passada", value: "LAST_WEEK" },
-//   { name: "Este mês", value: "THIS_MONTH" },
-//   { name: "Mês passado", value: "LAST_MONTH" },
-// ];
+const periodOptions = [
+  { name: "Today", value: "TODAY" },
+  { name: "Yesterday", value: "YESTERDAY" },
+  { name: "Current week", value: "THIS_WEEK" },
+  { name: "Past week", value: "LAST_WEEK" },
+  { name: "Current Month", value: "THIS_MONTH" },
+  { name: "Past Month", value: "LAST_MONTH" },
+];
 
 function DashboardTopBar({ updateDashboardPeriod }: {
   updateDashboardPeriod: (newRange: DateValueType) => void;
@@ -41,20 +43,20 @@ function DashboardTopBar({ updateDashboardPeriod }: {
           containerClassName="w-72 "
           value={dateValue}
           // theme={"light"}
-          displayFormat="DD/MM/YYYY"
+          displayFormat={t("MM/DD/YYYY")}
           inputClassName="input input-bordered w-72"
           popoverDirection={"down"}
           toggleClassName="invisible"
           onChange={handleDatePickerValueChange}
           showShortcuts={true}
-          i18n="pt-BR"
+          i18n={t("en-US")}
           configs={{
             shortcuts: {
-              today: "Hoje",
-              yesterday: "Ontem",
-              past: (period) => `Últimos ${period} dias`,
-              currentMonth: "Este mês",
-              pastMonth: "Mês passado",
+              today: t("Today"),
+              yesterday: t("Yesterday"),
+              past: (period) => t("Last {} days", period),
+              currentMonth: t("Current month"),
+              pastMonth: t("Past month"),
             },
           }}
           // primaryColor={"blue"}
@@ -62,8 +64,8 @@ function DashboardTopBar({ updateDashboardPeriod }: {
         {
           /* <SelectBox
                 options={periodOptions}
-                labelTitle="Period"
-                placeholder="Select date range"
+                labelTitle={t("Period")}
+                placeholder={t("Select date range")}
                 containerStyle="w-72"
                 labelStyle="hidden"
                 defaultValue="TODAY"
@@ -74,11 +76,11 @@ function DashboardTopBar({ updateDashboardPeriod }: {
       <div className="text-right ">
         <button className="btn btn-ghost btn-sm normal-case">
           <ArrowPathIcon className="w-4 mr-2" />
-          Atualizar
+          {t("Refresh Data")}
         </button>
         <button className="btn btn-ghost btn-sm normal-case  ml-2">
           <ShareIcon className="w-4 mr-2" />
-          Compartilhar
+          {t("Share")}
         </button>
 
         <div className="dropdown dropdown-bottom dropdown-end  ml-2">
@@ -95,13 +97,13 @@ function DashboardTopBar({ updateDashboardPeriod }: {
             <li>
               <a>
                 <EnvelopeIcon className="w-4" />
-                Enviar resumo por e-mail
+                {t("Send Email")}
               </a>
             </li>
             <li>
               <a>
                 <ArrowDownTrayIcon className="w-4" />
-                Download
+                {t("Download")}
               </a>
             </li>
           </ul>

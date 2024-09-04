@@ -73,9 +73,8 @@ function Integration(): React.JSX.Element {
     );
     dispatch(
       showNotification({
-        message: `${integration.name} ${
-          integration.isActive ? "disabled" : "enabled"
-        }`,
+        message: `${integration.name} ${integration.isActive ? "disabled" : "enabled"
+          }`,
         status: 1,
       }),
     );

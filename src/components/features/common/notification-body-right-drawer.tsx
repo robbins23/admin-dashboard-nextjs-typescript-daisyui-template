@@ -1,4 +1,6 @@
 import React from "react";
+import { namespaceTranslation } from "@/helper/i18n";
+const t = namespaceTranslation("notifications");
 
 interface Props {
   extraObject?: any;
@@ -16,8 +18,8 @@ function NotificationBodyRightDrawer({ extraObject, closeRightDrawer }: Props) {
               (i < 5 ? " bg-base-300" : "bg-base-200")}
           >
             {i % 2 === 0
-              ? `Your sales has increased by 30% yesterday`
-              : `Total likes for instagram post - New launch this week,  has crossed 100k `}
+              ? t("Your sales has increased by {}% yesterday", 30)
+              : t("Total likes for instagram post - New launch this week, has crossed {}", "100k")}
           </div>
         );
       })}

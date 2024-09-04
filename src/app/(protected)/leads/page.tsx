@@ -12,6 +12,8 @@ import TitleCard from "@/components/cards/title-card";
 import { getLeadsContent } from "./leadSlice";
 import { Lead } from "@/helper/types";
 import { openModal } from "@/components/features/common/modalSlice";
+import { namespaceTranslation } from "@/helper/i18n";
+const t = namespaceTranslation("leads");
 
 const TopSideButtons = () => {
   const dispatch = useAppDispatch();
@@ -59,10 +61,10 @@ function Leads() {
   const deleteCurrentLead = (index: number) => {
     dispatch(
       openModal({
-        title: "Confirmation",
+        title: t("Confirmation"),
         bodyType: MODAL_BODY_TYPES.CONFIRMATION,
         extraObject: {
-          message: `Are you sure you want to delete this lead?`,
+          message: t("Are you sure you want to delete this lead?"),
           type: CONFIRMATION_MODAL_CLOSE_TYPES.LEAD_DELETE,
           index,
         },
@@ -73,7 +75,7 @@ function Leads() {
   return (
     <>
       <TitleCard
-        title="Current Leads"
+        title={t("Current Leads")}
         topMargin="mt-2"
         TopSideButtons={<TopSideButtons />}
       >
@@ -98,7 +100,7 @@ function Leads() {
                         <div className="mask mask-squircle w-12 h-12">
                           <Image
                             src={l.avatar}
-                            alt="Avatar"
+                            alt={t("Avatar")}
                             height={80}
                             width={80}
                           />
@@ -114,7 +116,7 @@ function Leads() {
                   <td>
                     {moment(new Date())
                       .add(-5 * (k + 2), "days")
-                      .format("DD MMM YY")}
+                      .format(t("MM/DD/YY"))}
                   </td>
                   <td>{getDummyStatus(k)}</td>
                   <td>{l.last_name}</td>
