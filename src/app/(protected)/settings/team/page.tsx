@@ -1,17 +1,16 @@
-'use client';
-import TitleCard from '@/components/cards/title-card';
-import { showNotification } from '@/components/features/common/headerSlice';
-import DummyData from '@/helper/dummy-data';
-import { TeamMember } from '@/helper/dummy-data';
-import { useAppDispatch } from '@/lib/hooks';
-import { useState } from 'react';
+"use client";
+import TitleCard from "@/components/cards/title-card";
+import { showNotification } from "@/components/features/common/headerSlice";
+import { getTeamMembers, TeamMember } from "@/helper/dummy-data";
+import { useAppDispatch } from "@/lib/hooks";
+import { useState } from "react";
 
 const TopSideButtons: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const addNewTeamMember = () => {
     dispatch(
-      showNotification({ message: 'Add New Member Clicked', status: 1 })
+      showNotification({ message: "Add New Member Clicked", status: 1 }),
     );
   };
 
@@ -28,19 +27,17 @@ const TopSideButtons: React.FC = () => {
 };
 
 const Team: React.FC = () => {
-  const [members, setMembers] = useState<TeamMember[]>(
-    DummyData.TEAM_MEMBERS_LIST
-  );
+  const [members, setMembers] = useState<TeamMember[]>(getTeamMembers());
 
   const getRoleComponent = (role: string) => {
-    if (role === 'Admin') {
+    if (role === "Admin") {
       return <div className="badge badge-secondary">{role}</div>;
     }
-    if (role === 'Manager') return <div className="badge">{role}</div>;
-    if (role === 'Owner') {
+    if (role === "Manager") return <div className="badge">{role}</div>;
+    if (role === "Owner") {
       return <div className="badge badge-primary">{role}</div>;
     }
-    if (role === 'Support') {
+    if (role === "Support") {
       return <div className="badge badge-accent">{role}</div>;
     } else return <div className="badge badge-ghost">{role}</div>;
   };

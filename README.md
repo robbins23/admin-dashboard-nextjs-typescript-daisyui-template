@@ -25,6 +25,7 @@ with **redux toolkit** and other libraries already set up.
 - Store management using **redux toolkit**
 - **Daisy UI** components and **Tailwind** support
 - **Right and left sidebar**, Universal loader, notifications
+- **Translation** support
 
 <!-- - **Calendar**, global modal, **chart js 2**  and other components -->
 

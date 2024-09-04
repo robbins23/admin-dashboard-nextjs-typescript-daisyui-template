@@ -1,7 +1,7 @@
-import { CONFIRMATION_MODAL_CLOSE_TYPES } from '@/helper/app-constants';
-import { useAppDispatch } from '@/lib/hooks';
-import { deleteLead } from '@/app/(protected)/leads/leadSlice';
-import { showNotification } from '@/components/features/common/headerSlice';
+import { CONFIRMATION_MODAL_CLOSE_TYPES } from "@/helper/app-constants";
+import { useAppDispatch } from "@/lib/hooks";
+import { deleteLead } from "@/app/(protected)/leads/leadSlice";
+import { showNotification } from "@/components/features/common/headerSlice";
 
 interface Props {
   extraObject?: any;
@@ -17,7 +17,7 @@ function ConfirmationModalBody({ extraObject, closeModal }: Props) {
     if (type === CONFIRMATION_MODAL_CLOSE_TYPES.LEAD_DELETE) {
       // positive response, call api or dispatch redux function
       dispatch(deleteLead({ index }));
-      dispatch(showNotification({ message: 'Lead Deleted!', status: 1 }));
+      dispatch(showNotification({ message: "Lead Deleted!", status: 1 }));
     }
     closeModal();
   };

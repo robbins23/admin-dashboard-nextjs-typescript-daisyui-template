@@ -2,11 +2,8 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import type { Metadata } from "next";
-import axios from "axios";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { useAppDispatch } from "@/lib/hooks";
 import { useRouter } from "next/navigation";
-import auth from "@/lib/auth";
 import { ToastContainer } from "react-toastify";
 import { useAuth } from "@/lib/AuthProvider";
 import Header from "@/containers/header";

@@ -1,17 +1,17 @@
-'use client';
-import moment from 'moment';
-import { useEffect } from 'react';
-import Image from 'next/image';
-import TrashIcon from '@heroicons/react/24/outline/TrashIcon';
-import { useAppDispatch, useAppSelector } from '@/lib/hooks';
+"use client";
+import moment from "moment";
+import { useEffect } from "react";
+import Image from "next/image";
+import TrashIcon from "@heroicons/react/24/outline/TrashIcon";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import {
   CONFIRMATION_MODAL_CLOSE_TYPES,
   MODAL_BODY_TYPES,
-} from '@/helper/app-constants';
-import TitleCard from '@/components/cards/title-card';
-import { getLeadsContent } from './leadSlice';
-import { Lead } from '@/helper/types';
-import { openModal } from '@/components/features/common/modalSlice';
+} from "@/helper/app-constants";
+import TitleCard from "@/components/cards/title-card";
+import { getLeadsContent } from "./leadSlice";
+import { Lead } from "@/helper/types";
+import { openModal } from "@/components/features/common/modalSlice";
 
 const TopSideButtons = () => {
   const dispatch = useAppDispatch();
@@ -19,9 +19,9 @@ const TopSideButtons = () => {
   const openAddNewLeadModal = () => {
     dispatch(
       openModal({
-        title: 'Add New Lead',
+        title: "Add New Lead",
         bodyType: MODAL_BODY_TYPES.LEAD_ADD_NEW,
-      })
+      }),
     );
   };
 
@@ -59,14 +59,14 @@ function Leads() {
   const deleteCurrentLead = (index: number) => {
     dispatch(
       openModal({
-        title: 'Confirmation',
+        title: "Confirmation",
         bodyType: MODAL_BODY_TYPES.CONFIRMATION,
         extraObject: {
           message: `Are you sure you want to delete this lead?`,
           type: CONFIRMATION_MODAL_CLOSE_TYPES.LEAD_DELETE,
           index,
         },
-      })
+      }),
     );
   };
 
@@ -113,8 +113,8 @@ function Leads() {
                   <td>{l.email}</td>
                   <td>
                     {moment(new Date())
-                      .add(-5 * (k + 2), 'days')
-                      .format('DD MMM YY')}
+                      .add(-5 * (k + 2), "days")
+                      .format("DD MMM YY")}
                   </td>
                   <td>{getDummyStatus(k)}</td>
                   <td>{l.last_name}</td>

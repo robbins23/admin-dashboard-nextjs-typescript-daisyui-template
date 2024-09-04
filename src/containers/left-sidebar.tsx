@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import XMarkIcon from '@heroicons/react/24/outline/XMarkIcon';
-import Link from 'next/link';
-import routes from '@/helper/sidebar-routes';
-import { usePathname } from 'next/navigation';
-import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '@/lib/hooks';
-import { setPageTitle } from '@/components/features/common/headerSlice';
-import { getUserInfo } from '@/components/features/common/userSlice';
-import { SidebarMenuObj, UserProfile } from '@/helper/types';
-import BookmarkSquareIcon from '@heroicons/react/24/outline/BookmarkSquareIcon';
-import ChevronUpIcon from '@heroicons/react/24/outline/ChevronUpIcon';
-import ArrowUpOnSquareIcon from '@heroicons/react/24/outline/ArrowUpOnSquareIcon';
-import auth from '@/lib/auth';
-import Image from 'next/image';
+import XMarkIcon from "@heroicons/react/24/outline/XMarkIcon";
+import Link from "next/link";
+import routes from "@/helper/sidebar-routes";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { setPageTitle } from "@/components/features/common/headerSlice";
+import { getUserInfo } from "@/components/features/common/userSlice";
+import { SidebarMenuObj, UserProfile } from "@/helper/types";
+import BookmarkSquareIcon from "@heroicons/react/24/outline/BookmarkSquareIcon";
+import ChevronUpIcon from "@heroicons/react/24/outline/ChevronUpIcon";
+import ArrowUpOnSquareIcon from "@heroicons/react/24/outline/ArrowUpOnSquareIcon";
+import auth from "@/lib/auth";
+import Image from "next/image";
 
 interface LeftSidebarProps {}
 
@@ -22,7 +22,7 @@ function LeftSidebar(props: LeftSidebarProps) {
   const dispatch = useAppDispatch();
 
   const close = () => {
-    const leftSidebarDrawer = document.getElementById('left-sidebar-drawer');
+    const leftSidebarDrawer = document.getElementById("left-sidebar-drawer");
     if (leftSidebarDrawer) leftSidebarDrawer.click();
   };
   const user = useAppSelector((state) => state.user);
@@ -35,11 +35,11 @@ function LeftSidebar(props: LeftSidebarProps) {
     if (routeObj) {
       dispatch(setPageTitle({ title: routeObj.pageTitle }));
     } else {
-      const secondSlashIndex = pathname.indexOf('/', pathname.indexOf('/') + 1);
+      const secondSlashIndex = pathname.indexOf("/", pathname.indexOf("/") + 1);
       if (secondSlashIndex !== -1) {
         const substringBeforeSecondSlash = pathname.substring(
           0,
-          secondSlashIndex
+          secondSlashIndex,
         );
         let submenuRouteObj = routes.filter((r) => {
           return r.path == substringBeforeSecondSlash;
@@ -48,7 +48,6 @@ function LeftSidebar(props: LeftSidebarProps) {
           let submenuObj = submenuRouteObj.submenu.filter((r) => {
             return r.path == pathname;
           })[0];
-          console.log('herere', submenuObj);
           dispatch(setPageTitle({ title: submenuObj.pageTitle }));
         }
       }
@@ -60,28 +59,30 @@ function LeftSidebar(props: LeftSidebarProps) {
   }, [dispatch]);
 
   const logoutUser = async () => {
-    console.log('here');
+    console.log("here");
     await auth.logout();
-    window.location.href = '/';
+    window.location.href = "/";
   };
 
   function renderMenu(
     routes: SidebarMenuObj[],
-    parentK: string = ''
+    parentK: string = "",
   ): React.ReactNode {
     return routes.map((route, k) => {
       return (
         <li key={`${parentK}-${k}`}>
-          {route.submenu ? (
-            <details open>
-              <summary>
-                {route.icon} {route.pageName}
-              </summary>
-              <ul>{renderMenu(route.submenu!, k.toString())}</ul>
-            </details>
-          ) : (
-            renderMenuItem(route)
-          )}
+          {route.submenu
+            ? (
+              <details open>
+                <summary>
+                  {route.icon} {route.pageName}
+                </summary>
+                <ul>{renderMenu(route.submenu!, k.toString())}</ul>
+              </details>
+            )
+            : (
+              renderMenuItem(route)
+            )}
         </li>
       );
     });
@@ -92,16 +93,19 @@ function LeftSidebar(props: LeftSidebarProps) {
       <Link
         href={route.path}
         className={`${
-          pathname == route.path ? 'font-semibold bg-base-200 ' : 'font-normal'
+          pathname == route.path ? "font-semibold bg-base-200 " : "font-normal"
         }`}
       >
         {route.icon} {route.pageName}
-        {pathname === route.path ? (
-          <span
-            className="absolute inset-y-0 left-0 w-1 rounded-tr-md rounded-br-md bg-primary"
-            aria-hidden="true"
-          ></span>
-        ) : null}
+        {pathname === route.path
+          ? (
+            <span
+              className="absolute inset-y-0 left-0 w-1 rounded-tr-md rounded-br-md bg-primary"
+              aria-hidden="true"
+            >
+            </span>
+          )
+          : null}
       </Link>
     );
   }
@@ -131,7 +135,7 @@ function LeftSidebar(props: LeftSidebarProps) {
         </li>
         <div
           className="overflow-y-scroll pb-20 no-scrollbar"
-          style={{ height: '85vh' }}
+          style={{ height: "85vh" }}
         >
           {renderMenu(routes)}
         </div>
@@ -156,7 +160,7 @@ function LeftSidebar(props: LeftSidebarProps) {
           className="dropdown-content visible w-52 px-4 z-[1]  menu  shadow bg-base-200 rounded-box "
         >
           <li className="">
-            <Link href={'/settings/billing'}>
+            <Link href={"/settings/billing"}>
               <BookmarkSquareIcon className="w-4 " />
               Bill History
             </Link>
