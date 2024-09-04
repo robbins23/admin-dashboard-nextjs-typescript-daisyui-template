@@ -93,19 +93,19 @@ const routes: SidebarMenuObj[] = [
     pageTitle: t("Help"),
     submenu: [
       {
-        path: "/app/getting-started",
+        path: "/docs/getting-started",
         icon: <DocumentTextIcon className={submenuIconClasses} />,
         pageName: t("Getting Started"),
         pageTitle: t("Getting Started"),
       },
       {
-        path: "/app/features",
+        path: "/docs/features",
         icon: <TableCellsIcon className={submenuIconClasses} />,
         pageName: t("Features"),
         pageTitle: t("Features"),
       },
       {
-        path: "/app/components",
+        path: "/docs/components",
         icon: <CodeBracketSquareIcon className={submenuIconClasses} />,
         pageName: t("Components"),
         pageTitle: t("Components"),
