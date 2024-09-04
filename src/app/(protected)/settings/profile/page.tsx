@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import TitleCard from "@/components/cards/title-card";
 import { showNotification } from "@/components/features/common/headerSlice";
 import InputText from "@/components/input/input-text";

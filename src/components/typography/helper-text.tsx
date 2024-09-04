@@ -5,7 +5,9 @@ interface HelperTextProps {
   children: ReactNode;
 }
 
-function HelperText({ styleClass, children }: HelperTextProps): React.JSX.Element {
+function HelperText(
+  { styleClass, children }: HelperTextProps,
+): React.JSX.Element {
   return <div className={`text-slate-400 ${styleClass}`}>{children}</div>;
 }
 

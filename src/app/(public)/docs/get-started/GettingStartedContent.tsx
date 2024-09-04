@@ -175,8 +175,7 @@ function GettingStartedContent(): React.JSX.Element {
         <p>
           Chart JS library has rich components of different charts available. It
           is based on{" "}
-          <a href="https://www.chartjs.org/" target="_blank">Chart.js</a>
-          {" "}
+          <a href="https://www.chartjs.org/" target="_blank">Chart.js</a>{" "}
           library, the most popular charting library. We have added this library
           and added couple of examples in seperate page.
         </p>

@@ -10,5 +10,3 @@ function Title({ styleClass, children }: TitleProps): React.JSX.Element {
 }
 
 export default Title;
-
-

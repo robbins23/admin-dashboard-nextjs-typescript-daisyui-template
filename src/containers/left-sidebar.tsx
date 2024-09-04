@@ -18,7 +18,7 @@ import { namespaceTranslation } from "@/helper/i18n";
 import { APP_NAME } from "@/helper/app-constants";
 const t = namespaceTranslation("sidebar");
 
-interface LeftSidebarProps { }
+interface LeftSidebarProps {}
 
 function LeftSidebar(props: LeftSidebarProps) {
   const pathname = usePathname();
@@ -93,8 +93,9 @@ function LeftSidebar(props: LeftSidebarProps) {
     return (
       <Link
         href={route.path}
-        className={`${pathname == route.path ? "font-semibold bg-base-200 " : "font-normal"
-          }`}
+        className={`${
+          pathname == route.path ? "font-semibold bg-base-200 " : "font-normal"
+        }`}
       >
         {route.icon} {route.pageName}
         {pathname === route.path
