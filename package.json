@@ -1,8 +1,8 @@
 {
-  "name": "atendmais-admin-next",
-  "version": "0.1.0",
+  "name": "admin-dashboard-daisyui-nextjs-typescript",
+  "version": "0.2.0",
   "private": true,
-  "description": "Admin Dashboard para o projeto AtendMais.",
+  "description": "Admin Dashboard template built with next js 14 app router typescript, tailwind css and daisy UI. Template uses rich tailwind css utility classes and have components of daisy UI, also have redux toolkit implemented for store management.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -43,7 +43,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/movelabs/atendmais-admin-next.git"
+    "url": "git+https://github.com/robbins23/admin-dashboard-nextjs-daisyui-template"
   },
   "keywords": [
     "reactjs",
@@ -53,5 +53,9 @@
     "daisyui",
     "dashboard"
   ],
-  "author": "jrvidotti"
+  "author": "robbins23",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robbins23/admin-dashboard-nextjs-daisyui-template/issues"
+  }
 }

@@ -19,7 +19,10 @@ function NotificationBodyRightDrawer({ extraObject, closeRightDrawer }: Props) {
           >
             {i % 2 === 0
               ? t("Your sales has increased by {}% yesterday", 30)
-              : t("Total likes for instagram post - New launch this week, has crossed {}", "100k")}
+              : t(
+                "Total likes for instagram post - New launch this week, has crossed {}",
+                "100k",
+              )}
           </div>
         );
       })}

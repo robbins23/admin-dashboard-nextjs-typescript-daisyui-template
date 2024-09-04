@@ -67,7 +67,7 @@ const routes: SidebarMenuObj[] = [
     pageTitle: t("Settings"),
     submenu: [
       {
-        path: "/app/settings-profile",
+        path: "/settings/profile",
         icon: <UserIcon className={submenuIconClasses} />,
         pageName: t("Perfil"),
         pageTitle: t("Perfil"),

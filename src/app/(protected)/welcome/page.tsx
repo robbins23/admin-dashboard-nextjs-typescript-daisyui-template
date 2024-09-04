@@ -11,7 +11,9 @@ function Welcome() {
         <div className="max-w-md">
           <IntroPointers />
           <Link href="/dashboard">
-            <button className="btn bg-base-100 btn-outline">{t("Get Started")}</button>
+            <button className="btn bg-base-100 btn-outline">
+              {t("Get Started")}
+            </button>
           </Link>
         </div>
       </div>

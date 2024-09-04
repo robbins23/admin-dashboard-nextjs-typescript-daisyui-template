@@ -126,7 +126,7 @@ function LeftSidebar(props: LeftSidebarProps) {
             <Image
               className="mask mask-squircle w-10"
               src="/logo192.png"
-              alt="DashWind Logo"
+              alt={`${APP_NAME} Logo`}
               width="100"
               height="100"
             />
@@ -150,8 +150,14 @@ function LeftSidebar(props: LeftSidebarProps) {
           <div className="avatar">
             <div className="w-6 rounded-full">
               {user.avatar &&
-                <Image src={user.avatar} alt={user.name} width={80} height={80} />
-              }
+                (
+                  <Image
+                    src={user.avatar}
+                    alt={user.name}
+                    width={80}
+                    height={80}
+                  />
+                )}
             </div>
           </div>
           {user.name}
