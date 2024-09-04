@@ -1,6 +1,6 @@
-import axios from 'axios';
-import React, { useState, useEffect, FC } from 'react';
-import InformationCircleIcon from '@heroicons/react/24/outline/InformationCircleIcon';
+import axios from "axios";
+import React, { FC, useEffect, useState } from "react";
+import InformationCircleIcon from "@heroicons/react/24/outline/InformationCircleIcon";
 
 interface Option {
   name: string;
@@ -24,11 +24,11 @@ const SelectBox: FC<SelectBoxProps> = (props) => {
   const {
     labelTitle,
     labelDescription,
-    defaultValue = '',
-    containerStyle = '',
+    defaultValue = "",
+    containerStyle = "",
     placeholder,
-    labelStyle = '',
-    selectBoxStyle = '',
+    labelStyle = "",
+    selectBoxStyle = "",
     options,
     updateKey,
     updateFormValue,
@@ -37,14 +37,14 @@ const SelectBox: FC<SelectBoxProps> = (props) => {
   const [value, setValue] = useState<string>(defaultValue);
 
   const updateValue = (newValue: string) => {
-    console.log(newValue)
+    console.log(newValue);
     updateFormValue(updateKey, newValue); // Pass both updateKey and value
     // setValue(newValue);
   };
 
   useEffect(() => {
-      setValue(defaultValue)
-  }, [defaultValue])
+    setValue(defaultValue);
+  }, [defaultValue]);
 
   return (
     <div className={`inline-block ${containerStyle}`}>

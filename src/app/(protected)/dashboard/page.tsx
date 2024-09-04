@@ -1,13 +1,11 @@
-
-import Dashboard from '@/features/dashboard'
+import Dashboard from '@/features/dashboard';
 
 function Page() {
-
   return (
-    <div> 
-        <Dashboard />
+    <div>
+      <Dashboard />
     </div>
-  )
+  );
 }
 
-export default Page
+export default Page;

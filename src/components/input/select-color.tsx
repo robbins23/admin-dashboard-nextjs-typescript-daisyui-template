@@ -1,7 +1,7 @@
-import axios from 'axios';
-import React, { useState, useEffect, FC } from 'react';
-import InformationCircleIcon from '@heroicons/react/24/outline/InformationCircleIcon';
-import CheckCircleIcon from '@heroicons/react/24/solid/CheckCircleIcon';
+import axios from "axios";
+import React, { FC, useEffect, useState } from "react";
+import InformationCircleIcon from "@heroicons/react/24/outline/InformationCircleIcon";
+import CheckCircleIcon from "@heroicons/react/24/solid/CheckCircleIcon";
 
 interface Option {
   name: string;
@@ -25,11 +25,11 @@ const SelectColor: FC<SelectColorProps> = (props) => {
   const {
     labelTitle,
     labelDescription,
-    defaultValue = '',
-    containerStyle = '',
+    defaultValue = "",
+    containerStyle = "",
     placeholder,
-    labelStyle = '',
-    SelectColorStyle = '',
+    labelStyle = "",
+    SelectColorStyle = "",
     options,
     updateKey,
     updateFormValue,
@@ -43,8 +43,8 @@ const SelectColor: FC<SelectColorProps> = (props) => {
   };
 
   useEffect(() => {
-      setValue(defaultValue)
-  }, [defaultValue])
+    setValue(defaultValue);
+  }, [defaultValue]);
 
   return (
     <div className={`inline-block ${containerStyle}`}>
@@ -59,18 +59,24 @@ const SelectColor: FC<SelectColorProps> = (props) => {
         </div>
       </label>
       <div className=" mx-auto bg-white p-4 rounded-lg shadow-md">
-        <div className='grid grid-cols-5 gap-4'>
-              {
-                  options.map((o,k) => {
-                    return (<div key={k} className=' w-12 h-12 rounded-full cursor-pointer flex items-center justify-center' style={{backgroundColor : o.value}} onClick={() => updateValue(o.value)}>{value == o.value ? <CheckCircleIcon className='w-6 h-6 text-slate-600' /> : ""}</div>)
-                  })
-              }
+        <div className="grid grid-cols-5 gap-4">
+          {options.map((o, k) => {
+            return (
+              <div
+                key={k}
+                className=" w-12 h-12 rounded-full cursor-pointer flex items-center justify-center"
+                style={{ backgroundColor: o.value }}
+                onClick={() => updateValue(o.value)}
+              >
+                {value == o.value
+                  ? <CheckCircleIcon className="w-6 h-6 text-slate-600" />
+                  : ""}
+              </div>
+            );
+          })}
         </div>
       </div>
-
-      </div>
-
-      
+    </div>
   );
 };
 

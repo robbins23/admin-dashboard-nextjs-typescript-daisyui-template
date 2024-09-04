@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 interface TextAreaProps {
   labelTitle: string;
@@ -19,7 +19,7 @@ function TextArea({
   updateFormValue,
   updateType,
 }: TextAreaProps): JSX.Element {
-  const [value, setValue] = useState<string>(defaultValue || '');
+  const [value, setValue] = useState<string>(defaultValue || "");
 
   const updateTextAreaValue = (val: string): void => {
     setValue(val);
@@ -29,11 +29,16 @@ function TextArea({
   return (
     <div className={`form-control w-full ${containerStyle}`}>
       <label className="label">
-        <span className={'label-text text-xs text-base-content ' + (labelStyle || '')}>{labelTitle}</span>
+        <span
+          className={"label-text text-xs text-base-content " +
+            (labelStyle || "")}
+        >
+          {labelTitle}
+        </span>
       </label>
       <textarea
         value={value}
-        placeholder={placeholder || ''}
+        placeholder={placeholder || ""}
         onChange={(e) => updateTextAreaValue(e.target.value)}
         className="textarea textarea-bordered w-full"
       />

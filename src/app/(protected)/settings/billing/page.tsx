@@ -1,9 +1,7 @@
-import Billing from "@/features/settings/billing"
+import Billing from "@/features/settings/billing";
 
 function Page() {
-  return (
-        <Billing/>
-    )
+  return <Billing />;
 }
 
-export default Page
+export default Page;

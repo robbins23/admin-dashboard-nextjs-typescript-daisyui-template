@@ -1,9 +1,7 @@
-import Team from "@/features/settings/team"
+import Team from "@/features/settings/team";
 
 function Page() {
-  return (
-    <Team />
-    )
+  return <Team />;
 }
 
-export default Page
+export default Page;

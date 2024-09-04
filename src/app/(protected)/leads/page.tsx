@@ -1,9 +1,7 @@
-import Leads from '@/features/leads'
+import Leads from '@/features/leads';
 
 function Page() {
-  return (
-    <Leads />
-  )
+  return <Leads />;
 }
 
-export default Page
+export default Page;

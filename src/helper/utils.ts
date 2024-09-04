@@ -6,5 +6,5 @@
  * @returns The value converted to kilometers.
  */
 export function metersToKilometers(meters: number): number {
-    return meters / 1000;
+  return meters / 1000;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 interface InputTextProps {
   labelTitle: string;
@@ -21,7 +21,7 @@ function InputText({
   updateFormValue,
   updateType,
 }: InputTextProps): JSX.Element {
-  const [value, setValue] = useState<string>(defaultValue || '');
+  const [value, setValue] = useState<string>(defaultValue || "");
 
   const updateInputValue = (val: string): void => {
     setValue(val);
@@ -31,12 +31,17 @@ function InputText({
   return (
     <div className={`form-control w-full ${containerStyle}`}>
       <label className="label">
-        <span className={'label-text text-xs text-base-content ' + (labelStyle || '')}>{labelTitle}</span>
+        <span
+          className={"label-text text-xs text-base-content " +
+            (labelStyle || "")}
+        >
+          {labelTitle}
+        </span>
       </label>
       <input
-        type={type || 'text'}
+        type={type || "text"}
         value={value}
-        placeholder={placeholder || ''}
+        placeholder={placeholder || ""}
         onChange={(e) => updateInputValue(e.target.value)}
         className="input input-bordered w-full"
       />
