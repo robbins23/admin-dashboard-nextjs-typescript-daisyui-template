@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import FeaturesContent from "@/app/(public)/docs/features/FeaturesContent";

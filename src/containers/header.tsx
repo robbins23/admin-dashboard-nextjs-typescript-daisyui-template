@@ -38,7 +38,7 @@ function Header({ contentRef }: HeaderProps): JSX.Element {
       }
       dispatch(removeNotificationMessage());
     }
-  }, [newNotificationMessage]);
+  }, [newNotificationMessage, dispatch]);
 
   //  Scroll back to top on new page load
   useEffect(() => {
@@ -48,7 +48,7 @@ function Header({ contentRef }: HeaderProps): JSX.Element {
         behavior: "smooth",
       });
     }
-  }, [pageTitle]);
+  }, [pageTitle, contentRef]);
 
   useEffect(() => {
     themeChange(false);
@@ -95,16 +95,14 @@ function Header({ contentRef }: HeaderProps): JSX.Element {
           <SunIcon
             data-set-theme="light"
             data-act-class="ACTIVECLASS"
-            className={`fill-current w-6 h-6 ${
-              currentTheme === "dark" ? "swap-on" : "swap-off"
-            }`}
+            className={`fill-current w-6 h-6 ${currentTheme === "dark" ? "swap-on" : "swap-off"
+              }`}
           />
           <MoonIcon
             data-set-theme="dark"
             data-act-class="ACTIVECLASS"
-            className={`fill-current w-6 h-6 ${
-              currentTheme === "light" ? "swap-on" : "swap-off"
-            }`}
+            className={`fill-current w-6 h-6 ${currentTheme === "light" ? "swap-on" : "swap-off"
+              }`}
           />
         </label>
 

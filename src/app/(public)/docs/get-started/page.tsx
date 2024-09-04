@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import GettingStartedContent from "@/app/(public)/docs/get-started/GettingStartedContent";

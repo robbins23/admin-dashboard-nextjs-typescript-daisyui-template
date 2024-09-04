@@ -124,5 +124,15 @@
         "Manager": "Gerente",
         "Support": "Suporte",
         "Invite New": "Convidar Novo"
+    },
+    "welcome": {
+        "Get Started": "Começar"
+    },
+    "public": {
+        "Loading...": "Carregando..."
+    },
+    "login": {
+        "Enter Email Id to Continue": "Digite seu E-mail para Continuar",
+        "Enter your Email Id": "Digite seu E-mail"
     }
 }

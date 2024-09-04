@@ -130,7 +130,7 @@ function GettingStartedContent(): React.JSX.Element {
 
         <p>
           Apart from this it also helps in making HTML code more cleaner as we
-          don't have to include all utility classes of tailwind to make the UI.
+          don&apos;t have to include all utility classes of tailwind to make the UI.
           Check components{" "}
           <a
             href="https://daisyui.com/components/button/"
@@ -189,7 +189,7 @@ function GettingStartedContent(): React.JSX.Element {
           <li>
             I have to add a lot of packages to get Redux to do anything useful
           </li>
-          <li>Redux requires too much boilerplate code"</li>
+          <li>Redux requires too much boilerplate code</li>
           This library has been configured and used for showing notifications,
           modals and loading data from API in leads page.
         </p>
@@ -237,7 +237,7 @@ function GettingStartedContent(): React.JSX.Element {
         </div>
 
         <p>
-          Don't import like this (will load all icons and increase build time)
+          Don&apos;t import like this (will load all icons and increase build time)
         </p>
         <pre><code>{"import {BeakerIcon, BellIcon } from '@heroicons/react/24/solid'"}</code></pre>
 
